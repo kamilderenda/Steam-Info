@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     for i, row in enumerate(rows):
         game_name_element = row.find_elements(By.TAG_NAME, 'td')[2]
-        game_name = game_name_element.text
+        game_name = game_name_element.text.split('\n')[0]
 
         current = row.find_elements(By.TAG_NAME, 'td')[3]
         current = current.text
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     steam_info = pd.concat(steam_info_list, ignore_index=True)
 
 
-    steam_info.to_csv('Steam_Info.csv', sep=';', index=False, encoding='utf-8')
+    steam_info.to_csv('Most_Played_games.csv', sep=';', index=False, encoding='utf-8')
 
     print(steam_info)
 
